@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using banking_information_system.Models;
 
 namespace banking_information_system.Controllers
 {
@@ -8,40 +7,23 @@ namespace banking_information_system.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+
+
+
+
+        // Get all accounts
+
         // GET: api/<AccountController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Account> GetAllAccount()
         {
-            return new string[] { "value1", "value2" };
+            List<Account> accounts = new List<Account>
+            {
+                new Account { Id = "1", AccountNumber = "123456", AccountType = "Savings", Balance = 1000.00M, OpeningDate = "2022-01-01", Active = "Yes", BranchId = "B001" },
+                new Account { Id = "2", AccountNumber = "654321", AccountType = "Checking", Balance = 500.00M, OpeningDate = "2022-02-01", Active = "Yes", BranchId = "B002" }
+            };
+            return accounts;
         }
 
-        // GET api/<AccountController>/5
-        //[HttpGet("{id}")]
-        //[Route("GetAccountById")]
-        [Route("GetAccountById/{id}")]
-        [HttpGet]
-
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<AccountController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<AccountController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

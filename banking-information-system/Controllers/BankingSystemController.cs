@@ -1,3 +1,4 @@
+using banking_information_system.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace banking_information_system.Controllers
@@ -6,11 +7,6 @@ namespace banking_information_system.Controllers
     [Route("[controller]")]
     public class BankingSystemController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<BankingSystemController> _logger;
 
         public BankingSystemController(ILogger<BankingSystemController> logger)
@@ -18,16 +14,15 @@ namespace banking_information_system.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet(Name = "GetAccounts")]
+        public IEnumerable<Account> Get()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            List<Account> accounts = new List<Account>
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                new Account { Id = "1", AccountNumber = "123456", AccountType = "Savings", Balance = 1000.00M, OpeningDate = "2022-01-01", Active = "Yes", BranchId = "B001" },
+                new Account { Id = "2", AccountNumber = "654321", AccountType = "Checking", Balance = 500.00M, OpeningDate = "2022-02-01", Active = "Yes", BranchId = "B002" }
+            };
+            return accounts;
         }
     }
 }
