@@ -1,3 +1,8 @@
+using banking_information_system.Data;
+using banking_information_system.Services;
+
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -38,6 +43,12 @@ void ConfigureServices(IServiceCollection serviceCollection)
     serviceCollection.AddControllers();
     serviceCollection.AddEndpointsApiExplorer();
     serviceCollection.AddSwaggerGen();
+    serviceCollection.AddScoped<IAccountService, AccountService>();
+
+    serviceCollection.AddDbContext<DevelopmentContext>(optionsBuilder => 
+    {
+        optionsBuilder.UseSqlServer(builder.Configuration["DbConnectionString"]!);
+    });
 }
 
 void Configure(WebApplication webApplication, IWebHostEnvironment webHostEnvironment1) { 

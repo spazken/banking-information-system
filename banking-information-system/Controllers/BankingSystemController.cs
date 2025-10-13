@@ -14,15 +14,15 @@ namespace banking_information_system.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetAccounts")]
+      /*  [HttpGet(Name = "GetAccounts")]
         public IEnumerable<Account> Get()
         {
             List<Account> accounts = new List<Account>
             {
-                new Account { Id = "1", AccountNumber = "123456", AccountType = "Savings", Balance = 1000.00M, OpeningDate = "2022-01-01", Active = "Yes", BranchId = "B001" },
-                new Account { Id = "2", AccountNumber = "654321", AccountType = "Checking", Balance = 500.00M, OpeningDate = "2022-02-01", Active = "Yes", BranchId = "B002" }
+                new Account { Account_Id = "1", AccountNumber = "123456", AccountType = "Savings", Balance = 1000.00M, OpeningDate = "2022-01-01", Active = "Yes", BranchId = "B001" },
+                new Account { Account_Id = "2", AccountNumber = "654321", AccountType = "Checking", Balance = 500.00M, OpeningDate = "2022-02-01", Active = "Yes", BranchId = "B002" }
             };
             return accounts;
-        }
+        }*/
     }
 }

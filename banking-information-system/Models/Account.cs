@@ -1,13 +1,16 @@
-﻿namespace banking_information_system.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace banking_information_system.Models
 {
     public class Account
     {
-        public string Id {get; set; }
-        public string AccountNumber { get; set; }
-        public string AccountType { get; set; }
-        public decimal Balance { get; set; }
-        public string OpeningDate { get; set; }
+        [Key]
+        public string Account_Id {get; set; }
+        public string Account_Number { get; set; }
+        public string Account_Type { get; set; }
+        public string Balance { get; set; }
+        public string Opening_Date { get; set; }
         public string Active { get; set; }
-        public string BranchId { get; set; }
+        public string Branch_Id { get; set; }
     }
 }
