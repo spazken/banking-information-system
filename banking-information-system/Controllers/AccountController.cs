@@ -17,6 +17,7 @@ namespace banking_information_system.Controllers
         // Get all accounts
         // GET: api/<AccountController>
         [HttpGet]
+        [Route("GetAllAccounts")]
         public IEnumerable<Account> GetAllAccount()
         {
           
@@ -41,6 +42,34 @@ namespace banking_information_system.Controllers
             return result;
             
         }
+
+        // Create an Account
+        [HttpPost]
+        [Route("CreateAccount")]
+        public IActionResult CreateAccount([FromBody] Account account)
+        {
+            // Implementation for creating an account goes here
+            if (account == null) { }
+
+           var result =  _accountService.CreateAccount(account);
+
+            return result;
+        }
+
+        // Update an Existing Account
+        [HttpPut("{id}")]
+        public IActionResult UpdateAccount(string id, [FromBody] Account account)
+        {
+            if (account == null || string.IsNullOrEmpty(account.Account_Id))
+            {
+                return new BadRequestResult();
+            }
+            _accountService.UpdateAccount(account);
+            // Implementation for updating an account goes here
+
+            return Ok();
+        }
+
 
     }
 }
